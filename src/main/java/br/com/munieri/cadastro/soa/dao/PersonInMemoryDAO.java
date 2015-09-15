@@ -2,12 +2,14 @@ package br.com.munieri.cadastro.soa.dao;
 
 import br.com.munieri.cadastro.soa.model.Address;
 import br.com.munieri.cadastro.soa.model.Person;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
+@Qualifier("PersonInMemoryDAO")
 public class PersonInMemoryDAO implements PersonDAO {
 
     private List<Person> persons = new ArrayList<>();
