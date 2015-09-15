@@ -13,6 +13,11 @@ public class PersonController {
     @Autowired
     PersonDAO personDAO;
 
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
+    }
+
     @RequestMapping(value = "/listar")
     public ModelAndView listar() {
         ModelAndView modelAndView = new ModelAndView("list");
