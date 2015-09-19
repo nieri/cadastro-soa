@@ -10,7 +10,9 @@
   <body>
     <c:forEach items="${personList}" var="person">
       ${person.name} ${person.phone}
-      <a href="/pessoas/mostrar/${person.id}">detalhes</a><br>
+      <a href="/pessoas/mostrar/${person.id}">detalhes</a>
+       - <a href="/pessoas/editar?id=${person.id}">editar</a>
+       - <a href="/pessoas/deletar?id=${person.id}">excluir</a><br>
     </c:forEach>
   </body>
 </html>

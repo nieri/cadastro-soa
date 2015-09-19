@@ -45,4 +45,24 @@ public class PersonController {
         personDAO.save(person);
         return "redirect:listar";
     }
+
+    @RequestMapping(value = "/alterar", method = RequestMethod.POST)
+    public String alterar(Person person){
+        personDAO.update(person);
+        return "redirect:listar";
+    }
+
+    @RequestMapping(value = "/editar", method = RequestMethod.GET)
+    public ModelAndView editar(Long id) {
+        Person person = personDAO.findById(id);
+        ModelAndView modelAndView = new ModelAndView("pessoas/editar");
+        modelAndView.addObject(person);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/deletar", method = RequestMethod.GET)
+    public String deletar(Long id){
+        personDAO.delete(id);
+        return "redirect:listar";
+    }
 }

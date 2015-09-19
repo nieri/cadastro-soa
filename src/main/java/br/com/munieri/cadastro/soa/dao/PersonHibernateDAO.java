@@ -1,6 +1,7 @@
 package br.com.munieri.cadastro.soa.dao;
 
 import br.com.munieri.cadastro.soa.model.Person;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class PersonHibernateDAO implements PersonDAO {
 
     @Override
     public void delete(Long id) {
-        session.delete(id);
+        Query query = session.createQuery("delete Person where id = :ID");
+        query.setParameter("ID", id);
+
+        query.executeUpdate();
     }
 }
