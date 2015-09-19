@@ -1,15 +1,21 @@
 package br.com.munieri.cadastro.soa.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Calendar;
 
+@Entity
 public class Person {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private Calendar dateBirth;
     private String phone;
     private String mobile;
-    private Address address;
+    //private Address address;
 
     public Long getId() {
         return id;
@@ -51,11 +57,11 @@ public class Person {
         this.mobile = mobile;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+//    public Address getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Address address) {
+//        this.address = address;
+//    }
 }

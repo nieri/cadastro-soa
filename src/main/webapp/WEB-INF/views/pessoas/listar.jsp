@@ -8,11 +8,9 @@
     <title>Lista de Pessoas</title>
   </head>
   <body>
-
-  Lista de Pessoas <br><br>
-
     <c:forEach items="${personList}" var="person">
       ${person.name} ${person.phone}
+      <a href="/pessoas/mostrar/${person.id}">detalhes</a><br>
     </c:forEach>
   </body>
 </html>

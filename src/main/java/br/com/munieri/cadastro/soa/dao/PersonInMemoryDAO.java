@@ -17,6 +17,7 @@ public class PersonInMemoryDAO implements PersonDAO {
     public PersonInMemoryDAO() {
 
         Person person = new Person();
+        person.setId(1L);
         person.setName("Murilo Nieri");
         person.setMobile("99221133");
         person.setPhone("44553322");
@@ -28,7 +29,7 @@ public class PersonInMemoryDAO implements PersonDAO {
         address.setCity("Sao Paulo");
         address.setState("SP");
 
-        person.setAddress(address);
+//        person.setAddress(address);
         persons.add(person);
     }
 
@@ -43,12 +44,23 @@ public class PersonInMemoryDAO implements PersonDAO {
     }
 
     @Override
-    public List<Person> listar() {
+    public List<Person> list() {
         return persons;
     }
 
     @Override
     public Person findById(Long id) {
+
+        for (Person person : persons){
+            if(person.getId() == id){
+                return person;
+            }
+        }
         return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
     }
 }

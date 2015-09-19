@@ -8,6 +8,7 @@ public interface PersonDAO {
 
     void save(Person person);
     void update(Person person);
-    List<Person> listar();
+    List<Person> list();
     Person findById(Long id);
+    void delete(Long id);
 }

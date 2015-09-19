@@ -61,12 +61,12 @@ public class PersonControllerTest extends TestCase {
         person.setMobile("99221133");
         person.setPhone("44553322");
 
-        when(dao.listar()).thenReturn(Arrays.asList(person));
+        when(dao.list()).thenReturn(Arrays.asList(person));
 
-        mockMvc.perform(get("/pessoas/listar"))
+        mockMvc.perform(get("/pessoas/list"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("list"))
-                .andExpect(forwardedUrl("/WEB-INF/views/list.jsp"))
+                .andExpect(forwardedUrl("/WEB-INF/views/pessoas/list.jsp"))
                 .andExpect(model().attribute("personList", hasSize(1)))
                 .andExpect(model().attribute("personList", hasItem(
                         allOf(
@@ -75,7 +75,7 @@ public class PersonControllerTest extends TestCase {
                         )
                 )));
 
-        verify(dao, times(1)).listar();
+        verify(dao, times(1)).list();
         verifyNoMoreInteractions(dao);
     }
 }

@@ -18,9 +18,7 @@ import java.io.IOException;
 public class ApplicationServer implements WebServer {
 
     private static final String CONFIG_LOCATION = "br.com.munieri.cadastro.soa.boot";
-
     public static final String CONTEXT_PATH = "/";
-
     public static final String MAPPING_URL = "/";
     public static final String DEFAULT_PROFILE = "staging";
     public static final int IDLE_TIMEOUT = 30000;
