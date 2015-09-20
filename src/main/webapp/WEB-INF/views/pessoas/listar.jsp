@@ -14,5 +14,6 @@
        - <a href="/pessoas/editar?id=${person.id}">editar</a>
        - <a href="/pessoas/deletar?id=${person.id}">excluir</a><br>
     </c:forEach>
+    <br><a href="/pessoas/index/">voltar</a>
   </body>
 </html>

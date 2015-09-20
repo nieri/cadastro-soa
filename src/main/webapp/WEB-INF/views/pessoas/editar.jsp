@@ -11,5 +11,7 @@ Alterar
     <input type="submit" value="Alterar"/>
   </form>
 
+  <br> <a href="/pessoas/listar/">listar</a>
+
 </body>
 </html>

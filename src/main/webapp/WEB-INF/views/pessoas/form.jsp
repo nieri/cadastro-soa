@@ -8,5 +8,6 @@
     Telefone: <input type="text" name="phone"/><br>
     <input type="submit" value="Cadastrar"/>
   </form>
+  <br><a href="/pessoas/listar/">voltar</a>
 </body>
 </html>
