@@ -64,7 +64,7 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter {
 
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-        hibernateProperties.put("hibernate.hbm2ddl.auto", "update");
+        hibernateProperties.put("hibernate.hbm2ddl.auto", "create");
         hibernateProperties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
         hibernateProperties.put("hibernate.format_sql", "true");
         hibernateProperties.put("hibernate.show_sql", "false");
