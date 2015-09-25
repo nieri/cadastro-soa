@@ -1,35 +1,37 @@
 package br.com.munieri.cadastro.soa.repository;
 
 import br.com.munieri.cadastro.soa.model.Person;
+import br.com.munieri.cadastro.soa.repository.converter.PersonConverter;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
+@Repository
 public class PersonRepository {
 
     private static final String URL = "http://localhost:8081";
+    private final PersonConverter personConverter = new PersonConverter();
 
-    public HashSet<Person> findAll(){
+    public List<Person> list(){
+
         RestTemplate restTemplate = new RestTemplate();
-        HashSet<Person> personList = restTemplate.getForObject(URL + "/all", HashSet.class);
-        return personList;
+        List<HashMap> result = restTemplate.getForObject(URL + "/all", List.class);
+
+        return PersonConverter.convert(result);
     }
 
-    private void delete()
-    {
-        final String uri = URL + "/delete";
+    private void delete(Long id) {
+        final String uri = URL + "/delete/{id}";
 
         Map<String, String> params = new HashMap<String, String>();
-        params.put("id", "4");
+        params.put("id", "2");
 
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete ( uri,  params );
     }
 
-    private void create()
-    {
+    private void create() {
 
         final String uri = URL + "/create";
 
@@ -46,13 +48,7 @@ public class PersonRepository {
     public static void main(String... args) {
 
         PersonRepository repository = new PersonRepository();
-//        System.out.println(repository.findAll());
-//
-//        HashSet<Person> personList = repository.findAll();
-//
-//        System.out.println(personList);
 
-        repository.create();
-
+        repository.delete(2l);
     }
 }

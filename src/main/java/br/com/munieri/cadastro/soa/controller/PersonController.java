@@ -2,6 +2,7 @@ package br.com.munieri.cadastro.soa.controller;
 
 import br.com.munieri.cadastro.soa.dao.PersonDAO;
 import br.com.munieri.cadastro.soa.model.Person;
+import br.com.munieri.cadastro.soa.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,9 @@ public class PersonController {
     @Autowired
     PersonDAO personDAO;
 
+    @Autowired
+    PersonRepository repository;
+
     @RequestMapping("/index")
     public String index() {
         return "pessoas/index";
@@ -24,7 +28,7 @@ public class PersonController {
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public ModelAndView listar() {
         ModelAndView modelAndView = new ModelAndView("pessoas/listar");
-        modelAndView.addObject(personDAO.list());
+        modelAndView.addObject(repository.list());
         return modelAndView;
     }
 
