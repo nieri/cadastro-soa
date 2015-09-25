@@ -10,17 +10,31 @@ import java.util.List;
 
 public class PersonConverter {
 
-    public static List<Person> convert(List<HashMap> result) {
+    public static List<Person> convertList(List<HashMap> result) {
 
         List<Person> personList = new ArrayList<Person>();
         Person person;
         for (HashMap map : result) {
             person = new Person();
+            person.setId(Long.parseLong(String.valueOf(map.get("id"))));
             person.setName((String) map.get("name"));
             person.setPhone((String) map.get("phone"));
             personList.add(person);
         }
 
         return personList;
+    }
+
+    public static Person convertOne(List<HashMap> result) {
+
+        Person person = null;
+        for (HashMap map : result) {
+            person = new Person();
+            person.setId(Long.parseLong(String.valueOf(map.get("id"))));
+            person.setName((String) map.get("name"));
+            person.setPhone((String) map.get("phone"));
+        }
+
+        return person;
     }
 }

@@ -1,6 +1,5 @@
 package br.com.munieri.cadastro.soa.controller;
 
-import br.com.munieri.cadastro.soa.dao.PersonDAO;
 import br.com.munieri.cadastro.soa.model.Person;
 import br.com.munieri.cadastro.soa.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/pessoas")
 public class PersonController {
-
-    @Autowired
-    PersonDAO personDAO;
 
     @Autowired
     PersonRepository repository;
@@ -35,7 +31,7 @@ public class PersonController {
     @RequestMapping(value = "/mostrar/{id}", method = RequestMethod.GET)
     public ModelAndView mostrar(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("pessoas/mostrar");
-        modelAndView.addObject(personDAO.findById(id));
+        modelAndView.addObject(repository.findById(id));
         return modelAndView;
     }
 
@@ -46,19 +42,19 @@ public class PersonController {
 
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public String salvar(Person person){
-        personDAO.save(person);
+        repository.save(person);
         return "redirect:listar";
     }
 
     @RequestMapping(value = "/alterar", method = RequestMethod.POST)
     public String alterar(Person person){
-        personDAO.update(person);
+        repository.update(person);
         return "redirect:listar";
     }
 
     @RequestMapping(value = "/editar", method = RequestMethod.GET)
     public ModelAndView editar(Long id) {
-        Person person = personDAO.findById(id);
+        Person person = repository.findById(id);
         ModelAndView modelAndView = new ModelAndView("pessoas/editar");
         modelAndView.addObject(person);
         return modelAndView;
@@ -66,7 +62,7 @@ public class PersonController {
 
     @RequestMapping(value = "/deletar", method = RequestMethod.GET)
     public String deletar(Long id){
-        personDAO.delete(id);
+        repository.delete(id);
         return "redirect:listar";
     }
 }

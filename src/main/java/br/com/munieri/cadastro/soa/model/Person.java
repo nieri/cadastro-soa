@@ -1,11 +1,14 @@
 package br.com.munieri.cadastro.soa.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Calendar;
 
 @Entity
+@JsonAutoDetect
 public class Person {
 
     @Id
