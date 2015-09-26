@@ -1,8 +1,6 @@
 package br.com.munieri.cadastro.soa.repository.converter;
 
 import br.com.munieri.cadastro.soa.model.Person;
-import br.com.munieri.cadastro.soa.repository.PersonRepository;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.HashMap;

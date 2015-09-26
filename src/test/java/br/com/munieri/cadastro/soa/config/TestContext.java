@@ -1,6 +1,6 @@
 package br.com.munieri.cadastro.soa.config;
 
-import br.com.munieri.cadastro.soa.dao.PersonDAO;
+import br.com.munieri.cadastro.soa.repository.PersonRepository;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -24,8 +24,8 @@ public class TestContext {
     }
 
     @Bean
-    @Qualifier("PersonDAOMock")
-    public PersonDAO personDAO() {
-        return Mockito.mock(PersonDAO.class);
+    @Qualifier("PersonRepositoryMock")
+    public PersonRepository personRepository() {
+        return Mockito.mock(PersonRepository.class);
     }
 }

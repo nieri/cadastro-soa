@@ -1,6 +1,7 @@
-package br.com.munieri.cadastro.soa.dao;
+package br.com.munieri.cadastro.soa.repository.hibernate;
 
 import br.com.munieri.cadastro.soa.model.Person;
+import br.com.munieri.cadastro.soa.repository.PersonRepository;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,12 +13,12 @@ import java.util.List;
 
 @Repository
 @Primary
-public class PersonHibernateDAO implements PersonDAO {
+public class PersonHibernateRepository implements PersonRepository {
 
     private Session session;
 
     @Autowired
-    public PersonHibernateDAO(SessionFactory factory) {
+    public PersonHibernateRepository(SessionFactory factory) {
         session = factory.openSession();
     }
 

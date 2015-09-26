@@ -22,7 +22,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan("br.com.munieri.cadastro.soa")
-@EnableJpaRepositories({"br.com.munieri.cadastro.soa.dao"})
+@EnableJpaRepositories({"br.com.munieri.cadastro.soa.repository"})
 @EnableWebMvc
 public class ApplicationInitializer extends WebMvcConfigurerAdapter {
 
@@ -55,7 +55,7 @@ public class ApplicationInitializer extends WebMvcConfigurerAdapter {
         LOGGER.info("Configurando [entityManagerFactory]...");
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setPackagesToScan("br.com.munieri.cadastro.soa.dao");
+        entityManagerFactoryBean.setPackagesToScan("br.com.munieri.cadastro.soa.repository");
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
         entityManagerFactoryBean.setJpaProperties(hibernateProperties());
         LOGGER.info(entityManagerFactoryBean);

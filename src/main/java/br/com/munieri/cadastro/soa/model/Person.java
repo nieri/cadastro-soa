@@ -1,10 +1,12 @@
 package br.com.munieri.cadastro.soa.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 
 @Entity
@@ -14,9 +16,13 @@ public class Person {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty
     private String name;
+    @NotNull
     private Calendar dateBirth;
+    @NotEmpty
     private String phone;
+    @NotEmpty
     private String mobile;
     //private Address address;
 

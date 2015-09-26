@@ -1,10 +1,10 @@
-package br.com.munieri.cadastro.soa.repository;
+package br.com.munieri.cadastro.soa.service;
 
 import br.com.munieri.cadastro.soa.model.Person;
 
 import java.util.List;
 
-public interface PersonRepository {
+public interface PersonService {
 
     List<Person> list();
 
@@ -15,5 +15,4 @@ public interface PersonRepository {
     void save(Person person);
 
     void update(Person person);
-
 }
