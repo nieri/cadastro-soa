@@ -8,6 +8,8 @@
     <title>Cadastro de Pessoas</title>
 </head>
 <body>
+    <div><h1>Cadastro de Pessoas</h1></div>
+
     <a href="/pessoas/listar/">listar</a>
      - <a href="/pessoas/form/">cadastrar</a>
 </body>
