@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +14,6 @@ import java.util.List;
 
 @Repository
 @Transactional
-@Primary
 public class PersonHibernateRepository implements PersonRepository {
 
     private Session session;

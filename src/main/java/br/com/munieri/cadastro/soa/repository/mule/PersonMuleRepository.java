@@ -1,16 +1,17 @@
 package br.com.munieri.cadastro.soa.repository.mule;
 
 import br.com.munieri.cadastro.soa.model.Person;
+import br.com.munieri.cadastro.soa.repository.PersonRepository;
 import br.com.munieri.cadastro.soa.repository.converter.PersonConverter;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
+@Primary
 @Repository
-public class PersonMuleRepository {
+public class PersonMuleRepository implements PersonRepository{
 
     private static final String URL = "http://localhost:8081";
     private final PersonConverter personConverter = new PersonConverter();
