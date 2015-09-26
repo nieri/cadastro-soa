@@ -2,7 +2,6 @@ package br.com.munieri.cadastro.soa.service.hibernate;
 
 import br.com.munieri.cadastro.soa.model.Person;
 import br.com.munieri.cadastro.soa.repository.PersonRepository;
-import br.com.munieri.cadastro.soa.repository.hibernate.PersonHibernateRepository;
 import br.com.munieri.cadastro.soa.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -39,6 +38,6 @@ public class PersonHibernateService implements PersonService{
 
     @Override
     public void update(Person person) {
-        repository.save(person);
+        repository.update(person);
     }
 }

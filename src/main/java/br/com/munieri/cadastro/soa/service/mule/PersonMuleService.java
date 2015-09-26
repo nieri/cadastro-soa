@@ -36,6 +36,6 @@ public class PersonMuleService implements PersonService{
 
     @Override
     public void update(Person person) {
-        repository.save(person);
+        repository.update(person);
     }
 }

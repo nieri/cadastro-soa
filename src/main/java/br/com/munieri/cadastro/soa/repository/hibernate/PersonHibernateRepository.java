@@ -5,13 +5,16 @@ import br.com.munieri.cadastro.soa.repository.PersonRepository;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
+@Transactional
 @Primary
 public class PersonHibernateRepository implements PersonRepository {
 
@@ -29,7 +32,9 @@ public class PersonHibernateRepository implements PersonRepository {
 
     @Override
     public void update(Person person) {
-        session.update(person);
+        Transaction tx = session.beginTransaction();
+        session.merge(person);
+        tx.commit();
     }
 
     @Override
