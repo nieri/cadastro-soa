@@ -16,7 +16,9 @@ public class PersonConverter {
             person = new Person();
             person.setId(Long.parseLong(String.valueOf(map.get("id"))));
             person.setName((String) map.get("name"));
+            person.setDateBirth((String) map.get("dateBirth"));
             person.setPhone((String) map.get("phone"));
+            person.setMobile((String) map.get("mobile"));
             personList.add(person);
         }
 
@@ -30,7 +32,9 @@ public class PersonConverter {
             person = new Person();
             person.setId(Long.parseLong(String.valueOf(map.get("id"))));
             person.setName((String) map.get("name"));
+            person.setDateBirth((String) map.get("dateBirth"));
             person.setPhone((String) map.get("phone"));
+            person.setMobile((String) map.get("mobile"));
         }
 
         return person;

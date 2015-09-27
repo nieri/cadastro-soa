@@ -1,6 +1,7 @@
 package br.com.munieri.cadastro.soa.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -8,11 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @JsonAutoDetect
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
 
     @Id
@@ -20,9 +25,8 @@ public class Person {
     private Long id;
     @NotEmpty
     private String name;
-    @NotNull
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Calendar dateBirth;
+    @NotEmpty
+    private String dateBirth;
     @NotEmpty
     private String phone;
     @NotEmpty
@@ -45,19 +49,27 @@ public class Person {
         this.name = name;
     }
 
-    public Calendar getDateBirth() {
+    public String getDateBirth() {
         return dateBirth;
     }
 
     public String getDateBirthFormatted() {
 
-        if (dateBirth != null){
-            return new SimpleDateFormat("dd/MM/yyyy").format(dateBirth.getTime());
+        Date data = null;
+        DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+
+        if (!dateBirth.isEmpty()){
+            try {
+                data = sdf.parse(dateBirth);
+            } catch (ParseException pe) {
+                throw new UnsupportedOperationException("Formato de Data inválido");
+            }
         }
-        return "";
+        return sdf.format(data);
     }
 
-    public void setDateBirth(Calendar dateBirth) {
+    public void setDateBirth(String dateBirth) {
         this.dateBirth = dateBirth;
     }
 
